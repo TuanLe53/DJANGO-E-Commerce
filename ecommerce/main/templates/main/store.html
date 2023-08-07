@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{owner.username}}'s Store{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-3">
+    <div class="row justify-content-around">
+
+
+        <div class="col-6" id="products">
+            <h2>Products</h2>
+            <div class="row">
+                {% for product in pd_list reversed%}
+                <a href="{% url 'main:detail' product.id %}" class="col-lg-3 card m-4 p-2">
+                    <img src="{{product.pd_imgs.all.0.image.url}}" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text">{{product.name}}</p>
+                        <p class="card-text">{{product.price}}$</p>
+                        <p class="card-text">{{product.description}}</p>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="col-3 p-2 text-center" id="owner_info">
+            <span class="material-symbols-rounded fs-1">
+                account_circle
+            </span>
+            <h2>{{owner.username}}</h2>
+            <h4>{{owner.email}}</h4>
+            <h4>About us:</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quae deserunt obcaecati ipsam et nesciunt omnis dolores minus iusto sed</p>
+            <div>
+                {% if user == owner %}
+                <a href="{% url 'main:add' %}" class="btn btn-success" role="button">Add item</a>
+                {% else %}
+                <a href="#" class="btn btn-success" role="button">Inbox</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

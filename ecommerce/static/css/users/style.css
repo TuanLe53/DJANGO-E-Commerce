@@ -1,0 +1,43 @@
+form{
+    width: 40%;
+    height: auto;
+    padding: 20px;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    margin: 50px auto 0px auto;
+    display: flex;
+    flex-direction: column;
+}
+legend{
+    text-align: center;
+    font-size: 3rem;
+}
+form input{
+    margin-bottom: 10px;
+}
+form button{
+    background-color: #C9F4AA;
+    width: 30%;
+    padding: 10px;
+    margin: auto;
+    border: none;
+    border-radius: 14px;
+    text-align: center;
+}
+form button:hover{
+    box-shadow: 0 0 10px 5px #BEF0CB ;
+    transition: 0.5s;
+}
+p{
+    text-align: center;
+}
+p a{
+    color: green;
+}
+h2{
+    color: red;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+}

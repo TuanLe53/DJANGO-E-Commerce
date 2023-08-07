@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{product.name}}{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid my-3">
+    <div class="row justify-content-around">
+
+        <div class="col-6 carousel slide" id="pd_img">
+            <div class="carousel-inner">
+                {% for photo in product.pd_imgs.all %}
+                    {% if forloop.first %}
+                        <div class="carousel-item active">
+                    {% else %}
+                        <div class="carousel-item">
+                    {% endif %}
+                            <img src="{{photo.image.url}}" class="img-thumbnail">
+                        </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#pd_img" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#pd_img" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="col-4" id="pd_info">
+            <h2>{{product.name}}</h2>
+            <h3>{{product.price}}$</h3>
+            <h4>Description:</h4><span>{{product.description}}</span>
+            <h5>Quantity: {{product.quantity}}</h5>
+            <h5>Shop: <a href="{% url 'main:store' product.owner.id %}">{{product.owner}}</a></h5>
+            <h5>Category: {{product.category}}</h5>
+            
+            <div class="row">
+                <div class="col-4">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <label class="form-label" for>Quantity:</label>
+                        <input type="number" name="quantity" max="{{product.quantity}}" min="1" id="quantity" class="form-control" required>
+                        <button type="submit" class="btn btn-success mt-2">Add to order</button>
+                    </form>
+                    <a class="btn btn-success mt-2" href="{% url 'main:add_to_wishlist' product.id %}">Add to wishlist</a>
+                </div>
+            </div>
+
+            {% for message in messages %}
+                <h2>{{message}}</h2>
+            {% endfor %}
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

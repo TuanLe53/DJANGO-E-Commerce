@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+    <div class="container-md mb-5">
+        <div class="row justify-content-around">
+
+            <div class="col-md-4 mt-5" id="new_order">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <legend class="text-center">{{new_order}}</legend>
+                    {% for pd in new_order.products_list.all %}
+                        <div class="row">
+                            <div class="col">
+                                <p>{{pd}} SL: {{pd.ordered_quantity}}</p>
+                            </div>
+                            <div class="col text-end">
+                                <p>{{pd.total_price}}$</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <p class="text-end border-bottom">Total price: {{new_order.total_price}}$</p>
+                    {{form}}
+                    
+                    <button class="btn btn-success" type="submit"><span class="material-symbols-outlined">shopping_cart_checkout</span>Order</button>
+                </form> 
+            </div>
+
+            <div class="col-md-5 mt-5">
+                {% for order in orders %}
+                <a href="{% url 'order:order_detail' order.id %}" class="orders">
+                    <h3 class="border-bottom">{{order}}</h3>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Total price:</td>
+                                <td>{{order.total_price}}$</td>
+                            </tr>
+                            <tr>
+                                <td>Status:</td>
+                                <td>{{order.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </a>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

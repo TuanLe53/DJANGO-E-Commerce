@@ -1,0 +1,140 @@
+:root{
+    --bg-color: #3C4048;
+    --primary-color:#00ABB3;
+    --secondary-color: #EAEAEA;
+    --sub-color: #B2B2B2;
+}
+html{
+    scroll-behavior: smooth;
+    scroll-padding: 3rem;
+}
+body{
+    background-color: var(--bg-color);
+}
+header, footer{
+    background-color: var(--sub-color);
+}
+
+a{
+    color: var(--bg-color);
+    text-decoration: none;
+}
+a:hover{
+    color: var(--bg-color);
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+ul{
+    list-style-type: none;
+}
+.carousel-control-next, .carousel-control-prev{
+    height: 100px;
+}
+/* ++++++++++++++++++++++++ */
+/*Home.html*/
+#banner .carousel-item{
+    height: 80vh;
+    background-color: var(--secondary-color);
+    position: relative;
+}
+#banner img{
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#banner .carousel-control-next, #banner .carousel-control-prev{
+    margin-top: 200px;
+}
+#category, .products_section{
+    background-color: var(--primary-color);
+    overflow: hidden;
+}
+#category{
+    height: 150px;
+    position: sticky;
+    top: 10px;
+}
+.products_section .card{
+    height: 300px;
+}
+.products_section .card img{
+    height: 200px;
+}
+.products_section .carousel-control-next, .products_section .carousel-control-prev{
+    margin-top: 100px;
+}
+
+/* ++++++++++++++++++++++++ */
+/*detail.html*/
+#pd_img .carousel-item{
+    height: 600px;
+    position: relative;
+}
+#pd_img img{
+    height: 70vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#pd_info{
+    background-color: var(--secondary-color);
+}
+#pd_img .carousel-control-next, #pd_img .carousel-control-prev{
+    margin-top: 235px;
+}
+/* ++++++++++++++++++++++++ */
+/*store.html*/
+#products, #owner_info{
+    background-color: var(--primary-color);
+}
+#owner_info{
+    height: 500px;
+}
+#products .card{
+    height: 400px;
+    overflow: hidden;
+}
+/* ++++++++++++++++++++++++ */
+/*wishlist.html*/
+#wishlist .card{
+    min-height: 180px;
+}
+/* ++++++++++++++++++++++++ */
+/*orders.html*/
+#new_order{
+    background-color: var(--primary-color);
+}
+.orders h3, table{
+    background-color: var(--secondary-color);
+}
+/* ++++++++++++++++++++++++ */
+/*order_detail.html*/
+#order_detail{
+    background-color: var(--primary-color);
+}
+#order_detail .card{
+    height: 180px;
+}
+#order_detail .card img{
+    height: 180px;
+}
+#address{
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+    #category{
+        position: fixed;
+        right:5px;
+        top: 370px;
+        height: 200px;
+    }
+    #order_detail .card{
+        height: 265px;
+    }
+}

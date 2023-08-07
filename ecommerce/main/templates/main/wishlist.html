@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}My Wishlist{% endblock %}
+
+{% block content %}
+<div class="container-md mt-5 mb-5" id="wishlist">
+    <div class="row">
+
+    {% for pd in wishlist.products.all %}
+    <div class="col-4">
+      <a class="card mb-3" style="max-width: 540px;" href="{% url 'main:detail' pd.id %}">
+        <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{pd.pd_imgs.all.0.image.url}}" class="img-thumbnail rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{pd}}</h5>
+                <p class="card-text">{{pd.price}}$</p>
+              </div>
+            </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
